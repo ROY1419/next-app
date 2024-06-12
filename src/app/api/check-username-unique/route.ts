@@ -1,3 +1,4 @@
+
 import dbConnect from "@/lib/bdConnect";
 import UserModel from "@/models/User";
 import { z } from "zod";
@@ -81,3 +82,4 @@ export async function GET(request: Request) {
 
     }
 }
+
