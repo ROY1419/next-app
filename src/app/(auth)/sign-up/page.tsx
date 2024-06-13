@@ -118,24 +118,22 @@ export default function SignUpForm() {
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel>Username</FormLabel>
-                                        <Input
-                                            {...field}
-                                            onChange={(e) => {
-                                                field.onChange(e);
-                                                debounced(e.target.value);
-                                            }}
-                                        />
-                                        {isCheckingUsername && <Loader2 className="animate-spin" />}
-                                        {/* {!isCheckingUsername && usernameMessage && (
-                                            <p
-                                                className={`text-sm ${usernameMessage === 'Username is unique'
-                                                    ? 'text-green-500'
-                                                    : 'text-red-500'
-                                                    }`}
-                                            >
-                                                {usernameMessage}
-                                            </p>
-                                        )} */}
+                                    <Input
+                                        {...field}
+                                        onChange={(e) => {
+                                            field.onChange(e);
+                                            debounced(e.target.value);
+                                        }}
+                                    />
+                                    {isCheckingUsername && <Loader2 className="animate-spin" />}
+                                    <p
+                                        className={`text-sm ${usernameMessage === 'Username is unique'
+                                            ? 'text-green-500'
+                                            : 'text-red-500'
+                                            }`}
+                                    >
+                                        {usernameMessage}
+                                    </p>
                                     <FormMessage />
                                 </FormItem>
                             )}
@@ -152,7 +150,6 @@ export default function SignUpForm() {
                                 </FormItem>
                             )}
                         />
-
                         <FormField
                             name="password"
                             control={form.control}
@@ -243,7 +240,7 @@ export default function SignUpForm() {
 //                 setUsernameMessage(''); // Reset message
 //                 try {
 //                     const response = await axios.get<ApiResponse>(
-//                         `/api/check-username-unique?username=${username}`
+                        // `/api/check-username-unique?username=${username}`
 //                     );
 //                     console.log(response.data.message);
 //                     let message = response.data.message

@@ -12,32 +12,32 @@ const UsernameQuerySchema = z.object({
 })
 
 export async function GET(request: Request) {
-    console.log(`Received request with method: ${request.method}`);
-    
-    if (request.method !== 'GET') {
-        return new Response(
-            JSON.stringify({
-                success: false,
-                message: 'Method not Allowed'
-            }),
-            { status: 400 }
-        );
-    }
-    await dbConnect()
+    // console.log(`Received request with method: ${request.method}`);
+
+    // if (request.method !== 'GET') {
+    //     return new Response(
+    //         JSON.stringify({
+    //             success: false,
+    //             message: 'Method not Allowed'
+    //         }),
+    //         { status: 400 }
+    //     );
+    // }
+    await dbConnect();
     try {
-        const { searchParams } = new URL(request.url)
+        const { searchParams } = new URL(request.url);
         const queryParams = {
-            username: searchParams.get('username')
-        }
+            username: searchParams.get('username'),
+        };
         // validate with zod
-        const result = UsernameQuerySchema.safeParse(queryParams)
+        const result = UsernameQuerySchema.safeParse(queryParams);
         console.log(result);
         if (!result.success) {
-            const usernameErrors = result.error.format().username?._errors || []
+            const usernameErrors = result.error.format().username?._errors || [];
             return new Response(
                 JSON.stringify({
                     success: false,
-                    message: usernameErrors?.length > 0 ? usernameErrors.join(',') : 'Invalid query parameters'
+                    message: usernameErrors?.length > 0 ? usernameErrors.join(',') : 'Invalid query parameters',
                 }),
                 { status: 400 }
             );

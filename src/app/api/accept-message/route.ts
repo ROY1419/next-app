@@ -1,7 +1,7 @@
 import dbConnect from "@/lib/bdConnect";
 import UserModel from "@/models/User";
 import { getServerSession, User } from "next-auth";
-import { authOptions } from "../sign-up/auth/[...nextauth]/options";
+import { authOptions } from "../auth/[...nextauth]/options";
 
 
 
